@@ -9,7 +9,7 @@ build-mindetach-module = true
 [YouTube]
 enabled = true
 build-mode = "both"                                                   # 'both', 'apk' or 'module'
-excluded-patches = "debugging"                                        # space-seperated patches to exclude (multiline strings are not supported)
+excluded-patches = ""                                        # space-seperated patches to exclude (multiline strings are not supported)
 included-patches = ""                                                 # space-seperated patches to include (non-excluded patches are included by default)
 version = "auto"                                                      # 'auto', 'latest', 'beta' or a custom one like '17.40.41'
 exclusive-patches = false                                             # excludes all patches by default
@@ -38,7 +38,7 @@ arch = "arm-v7a"
 
 [Twitter]
 build-mode = "apk"
-excluded-patches = "hide-views-stats"
+excluded-patches = ""
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/twitter-inc/twitter/"
 
@@ -57,7 +57,7 @@ version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/"
 
 [Spotify]
-enabled = false
+enabled = true
 build-mode = "apk"
 version = "auto"
 uptodown-dlurl = "https://spotify.en.uptodown.com/android"
