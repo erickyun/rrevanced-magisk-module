@@ -95,3 +95,9 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/joaomgcd/tasker/"
 [Photomath]
 enabled = false
 apkmonk-dlurl = "https://www.apkmonk.com/app/com.microblink.photomath/"
+
+[Netguard]
+enabled = true
+build-mode = "apk"
+version = "auto"
+uptodown-dlurl = "https://netguard.en.uptodown.com/android"
