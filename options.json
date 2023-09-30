@@ -1,1 +1,17 @@
-[]
+        
+[
+  {
+    "patchName": "Custom branding",
+    "options": [
+      {
+        "key": "iconPath",
+        "value": "https://github.com/ReVanced/revanced-branding/blob/main/assets/revanced-logo/revanced-logo-round.svg"
+      },
+      {
+        "key": "appName",
+        "value": "YouTube ReVanced"
+      }
+    ]
+  }
+]
+        
