@@ -7,4 +7,4 @@ enable-magisk-update = true   # set this to false if you do not want to receive 
 
 [YouTube]
 archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.google.android.youtube"
-included-patches = "custom-branding"
+included-patches = "Custom branding"
