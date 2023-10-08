@@ -1,1 +1,17 @@
-[]
+        
+[
+  {
+    "patchName": "Custom branding",
+    "options": [
+      {
+        "key": "appName",
+        "value": "YouTube ReVanced"
+      },
+      {
+        "key": "iconPath",
+        "value": "revanced-logo"
+      }
+    ]
+  }
+]
+        
