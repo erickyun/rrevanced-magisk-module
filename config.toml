@@ -7,4 +7,4 @@ enable-magisk-update = true   # set this to false if you do not want to receive 
 
 [YouTube]
 apkmirror-dlurl = "https://apkmirror.com/apk/google-inc/youtube/"
-included-patches = " 'Custom Branding'"
+included-patches = "'Custom Branding'"
