@@ -31,6 +31,8 @@ if [ "${2:-}" = "--config-update" ]; then
 	config_update
 	exit 0
 fi
+PREV_BUILDMD=$(cat build.md) || PREV_BUILDMD=""
+
 : >build.md
 ENABLE_MAGISK_UPDATE=$(toml_get "$main_config_t" enable-magisk-update) || ENABLE_MAGISK_UPDATE=true
 if [ "$ENABLE_MAGISK_UPDATE" = true ] && [ -z "${GITHUB_REPOSITORY:-}" ]; then
@@ -113,7 +115,9 @@ for table_name in $(toml_get_table_names); do
 	app_args[rv_brand]=$(toml_get "$t" rv-brand) || app_args[rv_brand]="$DEF_RV_BRAND"
 
 	app_args[excluded_patches]=$(toml_get "$t" excluded-patches) || app_args[excluded_patches]=""
+	if [ -n "${app_args[excluded_patches]}" ] && [[ "${app_args[excluded_patches]}" != *'"'* ]]; then abort "patch names inside excluded-patches must be quoted"; fi
 	app_args[included_patches]=$(toml_get "$t" included-patches) || app_args[included_patches]=""
+	if [ -n "${app_args[included_patches]}" ] && [[ "${app_args[included_patches]}" != *'"'* ]]; then abort "patch names inside included-patches must be quoted"; fi
 	app_args[exclusive_patches]=$(toml_get "$t" exclusive-patches) && vtf "${app_args[exclusive_patches]}" "exclusive-patches" || app_args[exclusive_patches]=false
 	app_args[version]=$(toml_get "$t" version) || app_args[version]="auto"
 	app_args[app_name]=$(toml_get "$t" app-name) || app_args[app_name]=$table_name
@@ -186,5 +190,11 @@ fi
 log "\n[revanced-magisk-module](https://github.com/j-hc/revanced-magisk-module)"
 log "\nChangelog:"
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
+
+SKIPPED=$(grep -F "Patches: " <<<"$PREV_BUILDMD" | grep -vE "$(grep -F "Patches: " build.md | cut -d/ -f1 | sed 's/  //g' | paste -sd '~' | sed 's;~;|;g')" || :)
+if [ -n "$SKIPPED" ]; then
+	log "\nSkipped:"
+	log "$SKIPPED"
+fi
 
 pr "Done"
